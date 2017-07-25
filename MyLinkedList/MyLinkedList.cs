@@ -98,8 +98,16 @@ namespace MyLinkedList
 
         public int IndexOf(T item)
         {
-            int count = 0;
-
+            int count = -1;
+            var current = _head;
+            while (current.Value!=item)
+            {
+                if (current.Next == null)
+                    break;
+                count++;
+                current = current.Next;
+            }
+            
             return count;
 
         }
