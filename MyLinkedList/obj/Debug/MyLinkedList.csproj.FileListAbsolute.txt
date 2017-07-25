@@ -4,3 +4,9 @@ c:\users\kerecsen\documents\visual studio 2017\Projects\MyLinkedList\MyLinkedLis
 c:\users\kerecsen\documents\visual studio 2017\Projects\MyLinkedList\MyLinkedList\obj\Debug\MyLinkedList.csprojResolveAssemblyReference.cache
 c:\users\kerecsen\documents\visual studio 2017\Projects\MyLinkedList\MyLinkedList\obj\Debug\MyLinkedList.exe
 c:\users\kerecsen\documents\visual studio 2017\Projects\MyLinkedList\MyLinkedList\obj\Debug\MyLinkedList.pdb
+E:\Repositori\MyLinkedList\MyLinkedList\bin\Debug\MyLinkedList.exe.config
+E:\Repositori\MyLinkedList\MyLinkedList\obj\Debug\MyLinkedList.exe
+E:\Repositori\MyLinkedList\MyLinkedList\obj\Debug\MyLinkedList.pdb
+E:\Repositori\MyLinkedList\MyLinkedList\bin\Debug\MyLinkedList.exe
+E:\Repositori\MyLinkedList\MyLinkedList\bin\Debug\MyLinkedList.pdb
+E:\Repositori\MyLinkedList\MyLinkedList\obj\Debug\MyLinkedList.csprojResolveAssemblyReference.cache

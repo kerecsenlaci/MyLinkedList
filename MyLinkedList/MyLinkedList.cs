@@ -16,7 +16,16 @@ namespace MyLinkedList
         }
         ListItem _head;
 
-        public int Count { get { throw new NotImplementedException(); } }
+        public int Count { get {
+                var current = _head;
+                var count = 0;
+                while (current.Next != null)
+                {
+                    count++;
+                    current = current.Next;
+                }
+                return count;
+                } }
         public bool IsReadOnly { get {return false;} }
 
         public T this[int index] {
@@ -98,7 +107,7 @@ namespace MyLinkedList
 
         public int IndexOf(T item)
         {
-            int count = -1;
+            int count = 0;
             var current = _head;
             while (current.Value!=item)
             {
@@ -107,19 +116,50 @@ namespace MyLinkedList
                 count++;
                 current = current.Next;
             }
-            
+            if (_head == null)
+                return -1;
             return count;
 
         }
 
         public void Insert(int index, T item)
         {
-            throw new NotImplementedException();
+            if (_head == null)
+                InsertAtStart(item);
+            else
+            {
+                var newItem = new ListItem();
+                var count = 0;
+                var current = _head;
+                var prev = default(ListItem);
+                while (current != null && count != index)
+                {
+                    prev = current;
+                    current = current.Next;
+                    count++;
+                }
+                newItem.Value = item;
+                newItem.Next = current;
+                if(prev!=null)
+                    prev.Next = newItem;
+            }
         }
 
         public void RemoveAt(int index)
         {
-            throw new NotImplementedException();
+            var count = 0;
+            var current = _head;
+            var prev = default(ListItem);
+            while (current != null && count != index)
+            {
+                prev = current;
+                current = current.Next;
+                count++;
+            }
+            if (prev == null)
+                _head = current.Next;
+            else
+                prev.Next = current.Next;
         }
 
         public void Add(T item)
@@ -141,14 +181,25 @@ namespace MyLinkedList
                     return true;
                 current = current.Next;
             }
-                
             return false;
-
         }
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            throw new NotImplementedException();
+            if (arrayIndex < Count)
+            {
+                array = new T[Count - arrayIndex];
+                var count = 0;
+                var current = _head;
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (count == arrayIndex)
+                        array[i] = current.Value;
+                    if (count < arrayIndex)
+                        count++;
+                    current = current.Next;
+                }
+            }
         }
 
     }
