@@ -10,3 +10,9 @@ E:\Repositori\MyLinkedList\MyLinkedList\obj\Debug\MyLinkedList.pdb
 E:\Repositori\MyLinkedList\MyLinkedList\bin\Debug\MyLinkedList.exe
 E:\Repositori\MyLinkedList\MyLinkedList\bin\Debug\MyLinkedList.pdb
 E:\Repositori\MyLinkedList\MyLinkedList\obj\Debug\MyLinkedList.csprojResolveAssemblyReference.cache
+D:\Repositories\MyLinkedList\MyLinkedList\bin\Debug\MyLinkedList.exe.config
+D:\Repositories\MyLinkedList\MyLinkedList\bin\Debug\MyLinkedList.exe
+D:\Repositories\MyLinkedList\MyLinkedList\bin\Debug\MyLinkedList.pdb
+D:\Repositories\MyLinkedList\MyLinkedList\obj\Debug\MyLinkedList.csprojResolveAssemblyReference.cache
+D:\Repositories\MyLinkedList\MyLinkedList\obj\Debug\MyLinkedList.exe
+D:\Repositories\MyLinkedList\MyLinkedList\obj\Debug\MyLinkedList.pdb

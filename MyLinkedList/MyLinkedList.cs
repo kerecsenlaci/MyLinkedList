@@ -18,7 +18,9 @@ namespace MyLinkedList
 
         public int Count { get {
                 var current = _head;
-                var count = 0;
+                var count = 1;
+                if (current == null)
+                    return 0;
                 while (current.Next != null)
                 {
                     count++;
