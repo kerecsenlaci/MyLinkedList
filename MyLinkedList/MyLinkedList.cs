@@ -16,6 +16,45 @@ namespace MyLinkedList
             public ListItem Next { get; set; }
         }
 
+        class MyListEnumerator : IEnumerator<T>
+        {
+            int index = -1;
+            MyLinkedList<T> _theList;
+
+            public MyListEnumerator(MyLinkedList<T> theList)
+            {
+                _theList = theList;
+            }
+
+
+            public T Current
+            {
+                get
+                {
+                    if (index < 0 || _theList.Count <= index)
+                        return default(T);
+                    return _theList[index];
+                }
+            }
+
+            object IEnumerator.Current { get { return Current; } }
+
+            public void Dispose()
+            {
+                
+            }
+
+            public bool MoveNext()
+            {
+                return ++index < _theList.Count;
+            }
+
+            public void Reset()
+            {
+                index = -1;
+            }
+        }
+
         ListItem _head;
 
         public int Count { get; private set; }
@@ -73,7 +112,7 @@ namespace MyLinkedList
 
         public IEnumerator<T> GetEnumerator()
         {
-            throw new NotImplementedException();
+            return new MyListEnumerator(this);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
