@@ -28,7 +28,17 @@ namespace MyLinkedList
             list.CopyTo(str,3);
             Console.WriteLine(str[1]);
 
+            DoubleLinkedList<string> dList = new DoubleLinkedList<string>();
+            dList.Add("Béla1");
+            dList.Add("Béla2");
+            dList.Add("Béla3");
+            dList.Add("Béla4");
+            dList.Add("Béla5");
+            dList.Add("Béla6");
+            dList.Add("Béla7");
+            dList.Add("Béla8");
 
+            Console.WriteLine(dList[2]);
 
             //Console.WriteLine(list[4]);
             //Console.WriteLine(list.Count);

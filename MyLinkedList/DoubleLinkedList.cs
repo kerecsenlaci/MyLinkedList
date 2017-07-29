@@ -7,21 +7,22 @@ using System.Threading.Tasks;
 
 namespace MyLinkedList
 {
-    class MyLinkedList<T> : IList<T>  where T : class
+    class DoubleLinkedList<T> : IList<T>  where T : class
     {
         class ListItem
 
         {
             public T Value { get; set; }
             public ListItem Next { get; set; }
+            public ListItem Prev { get; set; }
         }
 
         class MyListEnumerator : IEnumerator<T>
         {
             int index = -1;
-            MyLinkedList<T> _theList;
+            DoubleLinkedList<T> _theList;
 
-            public MyListEnumerator(MyLinkedList<T> theList)
+            public MyListEnumerator(DoubleLinkedList<T> theList)
             {
                 _theList = theList;
             }
@@ -85,7 +86,7 @@ namespace MyLinkedList
             }
         }
 
-        public MyLinkedList()
+        public DoubleLinkedList()
         {
             _head = null;
         }
@@ -93,19 +94,15 @@ namespace MyLinkedList
         public bool Remove(T value)
         {
             var current = _head;
-            var prev = default(ListItem);
-            while (current != null &&
-                  current.Value != value)
-            {
-                prev = current;
+            while (current != null && current.Value != value)             
                 current = current.Next;
-            }
+            
             if (current == null)
                 return false;
-            if (prev == null)
+            if (current.Prev == null)
                 _head = current.Next;
             else
-                prev.Next = current.Next;
+                current.Prev = current.Next;
             Count--;
             return true;
         }
@@ -161,26 +158,21 @@ namespace MyLinkedList
 
         public void RemoveAt(int index)
         {
-            
-            var current = _head;
-            var prev = default(ListItem);
-            var count = 0;
-            if (Count < index || current == null)
+            if (Count < index || _head == null)
                 return;
 
             Count--;
+            var count = 0;
+            var current = _head;
             while (count!=index)
             {
-                prev = current;
                 current = current.Next;
                 count++;
             }
-           
-            if (prev == null)
+            if (current.Prev == null)
                 _head = current.Next;
             else
-                prev.Next = current.Next;
-            Count--;
+                current.Prev = current.Next;
         }
 
         public void Add(T item)
@@ -206,6 +198,7 @@ namespace MyLinkedList
                 var current = _head;
                 while (current.Next != null)
                     current = current.Next;
+                newItem.Prev = current;
                 current.Next = newItem;
             }
         }
