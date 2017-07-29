@@ -23,8 +23,14 @@ namespace MyLinkedList
             {
                 Console.WriteLine(item);
             }
-
-            string[] str = new string[5];
+            list.RemoveAt(2);
+            Console.WriteLine();
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+            
+            string[] str = new string[4];
             list.CopyTo(str,3);
             Console.WriteLine(str[1]);
 
@@ -39,6 +45,11 @@ namespace MyLinkedList
             dList.Add("Béla8");
 
             Console.WriteLine(dList[2]);
+
+            foreach (var item in dList)
+            {
+                Console.WriteLine(item);
+            }
 
             //Console.WriteLine(list[4]);
             //Console.WriteLine(list.Count);

@@ -180,7 +180,7 @@ namespace MyLinkedList
                 _head = current.Next;
             else
                 prev.Next = current.Next;
-            Count--;
+            //Count--;
         }
 
         public void Add(T item)
