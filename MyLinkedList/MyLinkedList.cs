@@ -10,43 +10,39 @@ namespace MyLinkedList
     class MyLinkedList<T> : IList<T>  where T : class
     {
         class ListItem
+
         {
             public T Value { get; set; }
             public ListItem Next { get; set; }
         }
+
         ListItem _head;
 
-        public int Count { get {
-                var current = _head;
-                var count = 1;
-                if (current == null)
-                    return 0;
-                while (current.Next != null)
-                {
-                    count++;
-                    current = current.Next;
-                }
-                return count;
-                } }
-        public bool IsReadOnly { get {return false;} }
+        public int Count { get; private set; }
+        public bool IsReadOnly { get; } = false;
 
-        public T this[int index] {
-            get {
-                var current = _head;
-                var count = 0;
-                while (current.Next != null)
-                {
-                    if (count == index)
-                        return current.Value;
-                    count++;
-                    current = current.Next;
-                }
-                if (count == index)
-                    return current.Value;
+        ListItem ElementAt(int index)
+        {
+            if (index < 0 || index >= Count)
                 throw new IndexOutOfRangeException();
+            var count = 0;
+            var current = _head;
+            while (count++ != index)
+                current = current.Next;
+            return current;
+        }
+
+        public T this[int index]
+        {
+            get
+            {
+                var current = ElementAt(index);
+                return current.Value;
             }
-            set {
-                throw new NotImplementedException();
+            set
+            {
+                var current = ElementAt(index);
+                current.Value = value;
             }
         }
 
@@ -55,35 +51,12 @@ namespace MyLinkedList
             _head = null;
         }
 
-        public void InsertAtStart(T value)
-        {
-            var newItem = new ListItem();
-            newItem.Value = value;
-            newItem.Next = _head;
-            _head = newItem;
-        }
-
-        public void InsertAtEnd(T value)
-        {
-            if (_head == null)
-                InsertAtStart(value);
-            else
-            {
-                var newItem = new ListItem();
-                newItem.Value = value;
-                newItem.Next = null;
-                var current = _head;
-                while (current.Next != null)
-                    current = current.Next;
-                current.Next = newItem;
-            }
-        }
-
         public bool Remove(T value)
         {
             var current = _head;
             var prev = default(ListItem);
-            while (current != null && current.Value != value)
+            while (current != null &&
+                  current.Value != value)
             {
                 prev = current;
                 current = current.Next;
@@ -94,6 +67,7 @@ namespace MyLinkedList
                 _head = current.Next;
             else
                 prev.Next = current.Next;
+            Count--;
             return true;
         }
 
@@ -109,102 +83,91 @@ namespace MyLinkedList
 
         public int IndexOf(T item)
         {
-            int count = 0;
-            var current = _head;
-            while (current.Value!=item)
-            {
-                if (current.Next == null)
-                    break;
-                count++;
-                current = current.Next;
-            }
-            if (_head == null)
+            if (Count == 0) //_head == null
                 return -1;
-            return count;
-
+            var current = _head;
+            var index = 0;
+            while (index != Count - 1 &&
+                current.Value != item)
+            {
+                current = current.Next;
+                index++;
+            }
+            if (current.Value == item)
+                return index;
+            return -1;
         }
 
         public void Insert(int index, T item)
         {
-            if (_head == null)
-                InsertAtStart(item);
+            if (index < 0 || index >= Count)
+                throw new InvalidOperationException();
+            var newItem = new ListItem
+            {
+                Value = item
+            };
+            if (index == 0)
+            {
+                newItem.Next = _head;
+                _head = newItem;
+            }
             else
             {
-                var newItem = new ListItem();
-                var count = 0;
-                var current = _head;
-                var prev = default(ListItem);
-                while (current != null && count != index)
-                {
-                    prev = current;
-                    current = current.Next;
-                    count++;
-                }
-                newItem.Value = item;
-                newItem.Next = current;
-                if(prev!=null)
-                    prev.Next = newItem;
+                var prev = ElementAt(index - 1);
+                newItem.Next = prev.Next;
+                prev.Next = newItem;
             }
+            Count++;
         }
 
         public void RemoveAt(int index)
         {
-            var count = 0;
-            var current = _head;
-            var prev = default(ListItem);
-            while (current != null && count != index)
-            {
-                prev = current;
-                current = current.Next;
-                count++;
-            }
-            if (prev == null)
-                _head = current.Next;
-            else
-                prev.Next = current.Next;
+            Count--;
+            throw new NotImplementedException();
         }
 
         public void Add(T item)
         {
-            InsertAtEnd(item);
+            Count++;
+            if (_head == null)
+            {
+                var newItem = new ListItem();
+                newItem.Value = item;
+                _head = newItem;
+            }
+            else
+            {
+                var newItem = new ListItem
+                {
+                    Value = item,
+                    Next = null
+                };
+                //var newItem = new ListItem();
+                //newItem.Value = item;
+                //newItem.Next = null;
+
+                var current = _head;
+                while (current.Next != null)
+                    current = current.Next;
+                current.Next = newItem;
+            }
         }
 
         public void Clear()
         {
+            Count = 0;
             _head = null;
         }
 
         public bool Contains(T item)
         {
-            var current = _head;
-            while (current.Next != null)
-            {
-                if (current.Value == item)
-                    return true;
-                current = current.Next;
-            }
-            return false;
+            return IndexOf(item) != -1;
         }
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            if (arrayIndex < Count)
-            {
-                array = new T[Count - arrayIndex];
-                var count = 0;
-                var current = _head;
-                for (int i = 0; i < array.Length; i++)
-                {
-                    if (count == arrayIndex)
-                        array[i] = current.Value;
-                    if (count < arrayIndex)
-                        count++;
-                    current = current.Next;
-                }
-            }
+            throw new NotImplementedException();
         }
-
     }
-
 }
 
