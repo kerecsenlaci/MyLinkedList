@@ -204,8 +204,9 @@ namespace MyLinkedList
         }
 
         public void CopyTo(T[] array, int arrayIndex)
-        {
-            throw new NotImplementedException();
+        { 
+            for (int i = 0; i < array.Length; i++)
+                array[i] = this[arrayIndex++];
         }
     }
 }

@@ -24,6 +24,10 @@ namespace MyLinkedList
                 Console.WriteLine(item);
             }
 
+            string[] str = new string[5];
+            list.CopyTo(str,3);
+            Console.WriteLine(str[1]);
+
 
 
             //Console.WriteLine(list[4]);
