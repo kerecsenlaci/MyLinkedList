@@ -1,0 +1,8 @@
+E:\Repositori\MyLinkedList\MyLinkedListTest\obj\Debug\MyLinkedListTest.csprojResolveAssemblyReference.cache
+E:\Repositori\MyLinkedList\MyLinkedListTest\bin\Debug\MyLinkedListTest.dll
+E:\Repositori\MyLinkedList\MyLinkedListTest\bin\Debug\MyLinkedListTest.pdb
+E:\Repositori\MyLinkedList\MyLinkedListTest\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\Repositori\MyLinkedList\MyLinkedListTest\bin\Debug\MyLinkedList.exe
+E:\Repositori\MyLinkedList\MyLinkedListTest\bin\Debug\MyLinkedList.pdb
+E:\Repositori\MyLinkedList\MyLinkedListTest\obj\Debug\MyLinkedListTest.dll
+E:\Repositori\MyLinkedList\MyLinkedListTest\obj\Debug\MyLinkedListTest.pdb

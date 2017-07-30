@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MyLinkedList
+namespace MyLinkedListTest
 {
-    class DoubleLinkedList<T> : IList<T>  where T : class
+    public class DoubleLinkedList<T> : IList<T>  where T : class
     {
         class ListItem
 
@@ -114,7 +114,7 @@ namespace MyLinkedList
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
 
         public int IndexOf(T item)
